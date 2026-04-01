@@ -1,0 +1,585 @@
+Save this as  index.html . Put your photo in the same folder as this file and name it  lokeshwaran.jpg  (or change the image filename in the code).
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lokeshwaran | AI & DS Student Portfolio</title>
+  <meta name="description" content="Portfolio of Lokeshwaran — B.Tech AI & Data Science student." />
+
+  <style>
+    :root{
+      --bg:#0b1220;
+      --panel:rgba(255,255,255,.06);
+      --panel2:rgba(255,255,255,.09);
+      --text:#eaf0ff;
+      --muted:rgba(234,240,255,.74);
+      --brand:#7c5cff;
+      --brand2:#22d3ee;
+      --border:rgba(255,255,255,.12);
+      --shadow:0 14px 45px rgba(0,0,0,.45);
+      --radius:18px;
+      --max:1100px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 600px at 18% 10%, rgba(124,92,255,.25), transparent 60%),
+        radial-gradient(900px 500px at 90% 20%, rgba(34,211,238,.18), transparent 55%),
+        radial-gradient(900px 700px at 50% 92%, rgba(255,255,255,.06), transparent 60%),
+        var(--bg);
+      line-height:1.55;
+    }
+
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    .container{width:min(var(--max), calc(100% - 40px)); margin:0 auto}
+
+    /* NAV */
+    .nav{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,18,32,.60);
+      border-bottom:1px solid var(--border);
+    }
+    .nav-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:14px; padding:14px 0;
+    }
+    .logo{
+      display:flex; align-items:center; gap:10px;
+      font-weight:800; letter-spacing:.2px;
+    }
+    .mark{
+      width:36px; height:36px; border-radius:12px;
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
+      box-shadow: 0 10px 30px rgba(124,92,255,.25);
+    }
+    .nav-links{display:flex; gap:14px; align-items:center; flex-wrap:wrap; justify-content:flex-end}
+    .nav-links a{
+      padding:8px 10px;
+      border-radius:12px;
+      color:var(--muted);
+      border:1px solid transparent;
+    }
+    .nav-links a:hover{
+      color:var(--text);
+      border-color:var(--border);
+      background:rgba(255,255,255,.04);
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      padding:10px 14px;
+      border-radius:14px;
+      background: linear-gradient(135deg, rgba(124,92,255,.95), rgba(34,211,238,.85));
+      color:#071026;
+      font-weight:800;
+      border:0;
+      box-shadow: 0 14px 30px rgba(0,0,0,.25);
+    }
+    .btn:focus{outline:3px solid rgba(124,92,255,.35); outline-offset:3px}
+
+    /* HERO */
+    .hero{padding:56px 0 20px}
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap:24px;
+      align-items:stretch;
+    }
+    .card{
+      background:var(--panel);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .hero-card{padding:28px}
+    .kicker{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:8px 12px;
+      border-radius:999px;
+      background: rgba(124,92,255,.14);
+      border:1px solid rgba(124,92,255,.25);
+      color: var(--muted);
+      font-weight:600;
+      font-size:.95rem;
+    }
+    .k-dot{width:10px;height:10px;border-radius:99px;background: linear-gradient(135deg, var(--brand), var(--brand2));}
+    h1{margin:14px 0 10px; font-size: clamp(30px, 4.4vw, 46px); line-height:1.08}
+    .sub{color:var(--muted); font-size:1.05rem; margin:0 0 18px}
+    .hero-actions{display:flex; gap:12px; flex-wrap:wrap; margin-top:18px}
+    .ghost{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:10px 14px;
+      border-radius:14px;
+      background: rgba(255,255,255,.04);
+      border:1px solid var(--border);
+      color: var(--text);
+      font-weight:700;
+    }
+    .ghost:hover{background: rgba(255,255,255,.07)}
+
+    .profile{
+      padding:18px;
+      display:flex; flex-direction:column; gap:14px;
+    }
+    .avatar{
+      border-radius: 18px;
+      overflow:hidden;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.05);
+      aspect-ratio: 1 / 1;
+    }
+    .avatar img{
+      width:100%; height:100%;
+      object-fit: cover;
+    }
+    .mini{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px;
+    }
+    .pill{
+      padding:10px 12px;
+      border-radius:14px;
+      background: rgba(255,255,255,.04);
+      border:1px solid var(--border);
+      color: var(--muted);
+      font-weight:600;
+      font-size:.95rem;
+    }
+    .pill b{color:var(--text)}
+
+    /* SECTIONS */
+    section{padding:44px 0}
+    .section-head{
+      display:flex; align-items:flex-end; justify-content:space-between;
+      gap:18px; margin-bottom:18px;
+    }
+    .section-head h2{margin:0; font-size:1.7rem}
+    .section-head p{margin:0; color:var(--muted)}
+
+    .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:18px}
+    .grid-3{display:grid; grid-template-columns: repeat(3, 1fr); gap:18px}
+
+    .box{padding:18px}
+    .box h3{margin:0 0 10px}
+    .box p{margin:0; color:var(--muted)}
+
+    /* SKILLS */
+    .skill{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:14px;
+      padding:12px 14px;
+      border-radius:14px;
+      background: rgba(255,255,255,.04);
+      border:1px solid var(--border);
+      margin-top:10px;
+    }
+    .bar{
+      flex:1;
+      height:10px;
+      border-radius:999px;
+      background: rgba(255,255,255,.08);
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.10);
+    }
+    .fill{
+      height:100%;
+      width:50%;
+      background: linear-gradient(90deg, var(--brand), var(--brand2));
+      border-radius:999px;
+    }
+    .tag{
+      font-size:.9rem;
+      font-weight:800;
+      color:#071026;
+      padding:6px 10px;
+      border-radius:999px;
+      background: linear-gradient(135deg, rgba(124,92,255,.95), rgba(34,211,238,.85));
+      white-space:nowrap;
+    }
+
+    /* PROJECTS */
+    .project{
+      padding:18px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      position:relative;
+    }
+    .project .meta{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      color:var(--muted);
+      font-weight:600;
+      font-size:.95rem;
+    }
+    .chip{
+      padding:6px 10px;
+      border-radius:999px;
+      background: rgba(255,255,255,.04);
+      border:1px solid var(--border);
+    }
+    .project a.link{
+      margin-top:6px;
+      font-weight:800;
+      color: var(--text);
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+      width:max-content;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.04);
+    }
+    .project a.link:hover{background: rgba(255,255,255,.07)}
+
+    /* CONTACT */
+    form{display:grid; gap:12px}
+    input, textarea{
+      width:100%;
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      outline: none;
+      font: inherit;
+    }
+    textarea{min-height:120px; resize:vertical}
+    input:focus, textarea:focus{border-color: rgba(124,92,255,.55); box-shadow: 0 0 0 4px rgba(124,92,255,.18)}
+    .note{color:var(--muted); font-size:.95rem; margin:0}
+
+    /* FOOTER */
+    footer{
+      padding:24px 0 34px;
+      border-top:1px solid var(--border);
+      color: var(--muted);
+    }
+    .footer-inner{display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap}
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .hero-grid{grid-template-columns:1fr}
+      .grid-3{grid-template-columns:1fr}
+      .grid-2{grid-template-columns:1fr}
+      .mini{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width: 520px){
+      .mini{grid-template-columns:1fr}
+      .nav-inner{align-items:flex-start}
+      .nav-links{justify-content:flex-start}
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAV -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="logo">
+        <span class="mark" aria-hidden="true"></span>
+        <div>
+          <div>Lokeshwaran</div>
+          <div style="font-size:.9rem; color:var(--muted); font-weight:700;">AI & DS Student</div>
+        </div>
+      </div>
+
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+        <a class="btn" href="#contact" title="Contact Lokeshwaran">Hire / Connect</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main id="home" class="hero">
+    <div class="container hero-grid">
+      <div class="card hero-card">
+        <div class="kicker"><span class="k-dot" aria-hidden="true"></span> Professional AI & DS Engineering Student Portfolio</div>
+        <h1>Hi, I’m Lokeshwaran.<br>AI & Data Science Engineering Student.</h1>
+        <p class="sub">
+          2nd year B.Tech (Artificial Intelligence & Data Science) at
+          Asian College of Engineering and Technology, Coimbatore - 641 110.
+          I’m interested in ML, data analytics, and building real-world AI projects.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn" href="#projects">View Projects</a>
+          <a class="ghost" href="#about">About Me</a>
+          <a class="ghost" href="#contact">Contact</a>
+        </div>
+
+        <div style="margin-top:18px; color:var(--muted); font-weight:650;">
+          Replace the placeholders below with your links:
+          <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap;">
+            <span class="chip">GitHub: https://github.com/yourusername</span>
+            <span class="chip">LinkedIn: https://linkedin.com/in/yourprofile</span>
+            <span class="chip">Email: you@example.com</span>
+          </div>
+        </div>
+      </div>
+
+      <aside class="card profile" aria-label="Profile card">
+        <div class="avatar">
+          <!-- Change filename if needed -->
+          <img src="lokeshwaran.jpg" alt="Lokeshwaran profile photo" />
+        </div>
+
+        <div class="mini">
+          <div class="pill"><b>Degree:</b><br>B.Tech (AI & DS)</div>
+          <div class="pill"><b>Year:</b><br>2nd Year</div>
+          <div class="pill"><b>Location:</b><br>Coimbatore</div>
+          <div class="pill"><b>Focus:</b><br>ML • Data • AI</div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>About</h2>
+          <p>Quick introduction and what I’m currently learning.</p>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card box">
+          <h3>Who I am</h3>
+          <p>
+            I’m Lokeshwaran, a 2nd year B.Tech Artificial Intelligence and Data Science student at
+            Asian College of Engineering and Technology, Coimbatore - 641 110.
+            I enjoy solving problems using data, building machine learning models, and creating practical projects.
+          </p>
+        </div>
+
+        <div class="card box">
+          <h3>What I’m looking for</h3>
+          <p>
+            Internships and project opportunities in AI/ML, Data Science, Analytics, and Software Development,
+            where I can learn from industry mentors and contribute to real products.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Skills</h2>
+          <p>Update the percentages to match your confidence/experience.</p>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card box">
+          <h3>Technical</h3>
+
+          <div class="skill">
+            <div style="min-width:120px; font-weight:800;">Python</div>
+            <div class="bar"><div class="fill" style="width:85%"></div></div>
+            <div class="tag">85%</div>
+          </div>
+
+          <div class="skill">
+            <div style="min-width:120px; font-weight:800;">Machine Learning</div>
+            <div class="bar"><div class="fill" style="width:75%"></div></div>
+            <div class="tag">75%</div>
+          </div>
+
+          <div class="skill">
+            <div style="min-width:120px; font-weight:800;">Data Analysis</div>
+            <div class="bar"><div class="fill" style="width:70%"></div></div>
+            <div class="tag">70%</div>
+          </div>
+
+          <div class="skill">
+            <div style="min-width:120px; font-weight:800;">SQL</div>
+            <div class="bar"><div class="fill" style="width:65%"></div></div>
+            <div class="tag">65%</div>
+          </div>
+
+          <div class="skill">
+            <div style="min-width:120px; font-weight:800;">Web (HTML/CSS)</div>
+            <div class="bar"><div class="fill" style="width:70%"></div></div>
+            <div class="tag">70%</div>
+          </div>
+        </div>
+
+        <div class="card box">
+          <h3>Tools & Concepts</h3>
+          <p style="margin-bottom:12px;">
+            Add or remove based on what you know.
+          </p>
+          <div class="meta" style="display:flex; gap:10px; flex-wrap:wrap;">
+            <span class="chip">NumPy</span>
+            <span class="chip">Pandas</span>
+            <span class="chip">Matplotlib</span>
+            <span class="chip">Scikit-learn</span>
+            <span class="chip">Git & GitHub</span>
+            <span class="chip">Jupyter Notebook</span>
+            <span class="chip">Basics of Deep Learning</span>
+            <span class="chip">EDA</span>
+          </div>
+
+          <div style="margin-top:16px">
+            <h3 style="margin:0 0 10px;">Soft Skills</h3>
+            <div class="meta" style="display:flex; gap:10px; flex-wrap:wrap;">
+              <span class="chip">Communication</span>
+              <span class="chip">Teamwork</span>
+              <span class="chip">Problem Solving</span>
+              <span class="chip">Time Management</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Projects</h2>
+          <p>Replace these sample projects with your real ones.</p>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div class="card project">
+          <h3>Student Performance Prediction</h3>
+          <div class="meta">
+            <span class="chip">Python</span>
+            <span class="chip">Pandas</span>
+            <span class="chip">ML</span>
+          </div>
+          <p style="color:var(--muted); margin:0;">
+            Built a model to predict student outcomes using feature engineering and regression/classification.
+            Evaluated performance with accuracy/RMSE and improved results via tuning.
+          </p>
+          <a class="link" href="#" target="_blank" rel="noreferrer">Project Link →</a>
+        </div>
+
+        <div class="card project">
+          <h3>Fake News Detection</h3>
+          <div class="meta">
+            <span class="chip">NLP</span>
+            <span class="chip">Scikit-learn</span>
+            <span class="chip">TF-IDF</span>
+          </div>
+          <p style="color:var(--muted); margin:0;">
+            Implemented text preprocessing, vectorization, and classification to detect fake news articles.
+            Compared models and selected the best based on F1-score.
+          </p>
+          <a class="link" href="#" target="_blank" rel="noreferrer">Project Link →</a>
+        </div>
+
+        <div class="card project">
+          <h3>AI Portfolio Website</h3>
+          <div class="meta">
+            <span class="chip">HTML</span>
+            <span class="chip">CSS</span>
+            <span class="chip">Responsive</span>
+          </div>
+          <p style="color:var(--muted); margin:0;">
+            Designed a clean, responsive personal portfolio to highlight skills, projects, and contact details.
+          </p>
+          <a class="link" href="#" target="_blank" rel="noreferrer">Project Link →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Contact</h2>
+          <p>Send a message (demo form) or add your email/social links.</p>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card box">
+          <h3>Contact Details</h3>
+          <p>
+            <b>Name:</b> Lokeshwaran<br>
+            <b>Course:</b> B.Tech AI & Data Science (2nd Year)<br>
+            <b>College:</b> Asian College of Engineering and Technology<br>
+            <b>City:</b> Coimbatore - 641 110
+          </p>
+
+          <p style="margin-top:12px; color:var(--muted);">
+            <b>Email:</b> you@example.com<br>
+            <b>GitHub:</b> https://github.com/yourusername<br>
+            <b>LinkedIn:</b> https://linkedin.com/in/yourprofile
+          </p>
+
+          <p class="note" style="margin-top:12px;">
+            Tip: Replace the placeholders above with your real links.
+          </p>
+        </div>
+
+        <div class="card box">
+          <h3>Message Me</h3>
+          <form id="contactForm">
+            <input type="text" name="name" placeholder="Your name" required />
+            <input type="email" name="email" placeholder="Your email" required />
+            <textarea name="message" placeholder="Your message" required></textarea>
+            <button class="btn" type="submit">Send Message</button>
+            <p id="formStatus" class="note"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>© <span id="year"></span> Lokeshwaran. All rights reserved.</div>
+      <div style="display:flex; gap:12px; flex-wrap:wrap;">
+        <a class="ghost" href="#home">Back to top</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Demo contact form (no backend)
+    const form = document.getElementById("contactForm");
+    const statusEl = document.getElementById("formStatus");
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      statusEl.textContent = "Thanks! This is a demo form. Connect it to email/Google Forms/backend to actually send messages.";
+      form.reset();
+    });
+  </script>
+</body>
+</html>
+If your photo file has a different name (example:  photo.png ), change this line:
+*  src="lokeshwaran.jpg"  to  src="photo.png"
